@@ -2,7 +2,7 @@ SRCS_UTILS = init_stack.c linked_list.c
 UTILS_DIR = ./utils
 UTILS = ${SRCS_UTILS:%=${UTILS_DIR}/%}
 
-SRCS_OPERATORS = push_swap.c
+SRCS_OPERATORS = push_swap.c rotate.c
 OPERATORS_DIR = ./operators
 OPERATORS = ${SRCS_OPERATORS:%=${OPERATORS_DIR}/%}
 

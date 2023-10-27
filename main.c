@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bootjan <bootjan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 18:12:55 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/10/27 20:06:30 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/10/27 23:16:53 by bootjan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,11 @@ int	main(int argc, char **argv)
 		free_list(&stack_a);
 		return (0);
 	}
-	print_list(stack_a, 'a');
-	print_list(stack_b, 'b');
+	print_both(stack_a, stack_b);
 	ft_push(&stack_a, &stack_b, 1);
-	ft_swap(&stack_a, &stack_b, 1);
-	print_list(stack_a, 'a');
-	print_list(stack_b, 'b');
+	ft_rotate(&stack_a, NULL, 0);
+	print_both(stack_a, stack_b);
 	ft_push(&stack_a, &stack_b, 1);
-	print_list(stack_a, 'a');
-	print_list(stack_b, 'b');
-	print_list(stack_a, 'a');
-	print_list(stack_b, 'b');
-	ft_swap(&stack_a, &stack_b, 0);
-	print_list(stack_a, 'a');
-	print_list(stack_b, 'b');
+	ft_rotate(&stack_a, &stack_b, 2);
+	print_both(stack_a, stack_b);
 }

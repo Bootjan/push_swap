@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linked_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bootjan <bootjan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 18:55:00 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/10/27 19:41:46 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/10/27 22:51:50 by bootjan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ size_t	stack_len(t_stack *stack)
 		len++;
 	}
 	return (len);
+}
+
+void	print_both(t_stack *stack_a, t_stack *stack_b)
+{
+	print_list(stack_a, 'a');
+	print_list(stack_b, 'b');
 }
 
 void	print_list(t_stack *stack, char stack_name)
