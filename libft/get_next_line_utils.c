@@ -6,13 +6,13 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:46:11 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/10/17 17:51:22 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/10/27 19:38:37 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*free_function(char **temp)
+char	*free_temp(char **temp)
 {
 	if (*temp)
 		free(*temp);
@@ -20,19 +20,7 @@ char	*free_function(char **temp)
 	return (NULL);
 }
 
-size_t	ft_strlen(const char *s)
-{
-	size_t	len;
-
-	if (!s)
-		return (0);
-	len = 0;
-	while (s[len])
-		len++;
-	return (len);
-}
-
-int	ft_strchr(const char *str, char c)
+int	ft_index_n(const char *str, char c)
 {
 	size_t	i;
 
@@ -48,7 +36,7 @@ int	ft_strchr(const char *str, char c)
 	return (-1);
 }
 
-char	*ft_strdup(char *buffer)
+char	*ft_tempdup(char *buffer)
 {
 	char	*out;
 	size_t	length;
@@ -70,7 +58,7 @@ char	*ft_strdup(char *buffer)
 	return (out);
 }
 
-char	*ft_strjoin(char **temp, char *buffer)
+char	*ft_tempjoin(char **temp, char *buffer)
 {
 	char	*out;
 	size_t	length;
@@ -79,10 +67,10 @@ char	*ft_strjoin(char **temp, char *buffer)
 
 	length = ft_strlen(*temp) + ft_strlen(buffer);
 	if (length == 0)
-		return (free_function(temp));
+		return (free_temp(temp));
 	out = malloc((length + 1) * SIZE_OF_CHAR);
 	if (!out)
-		return (free_function(temp));
+		return (free_temp(temp));
 	i = 0;
 	j = 0;
 	while ((*temp)[j])
@@ -91,6 +79,6 @@ char	*ft_strjoin(char **temp, char *buffer)
 	while (buffer[j])
 		out[i++] = buffer[j++];
 	out[i] = '\0';
-	free_function(temp);
+	free_temp(temp);
 	return (out);
 }

@@ -6,7 +6,7 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:41:05 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/10/18 13:28:33 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/10/27 19:39:18 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	compute_buffer(char **temp, int fd, int *r, char buffer[])
 	*r = read(fd, buffer, BUFFER_SIZE);
 	if (*r == -1)
 	{
-		free_function(temp);
+		free_temp(temp);
 		return ;
 	}
 	if (*r == 0)
@@ -34,20 +34,20 @@ static void	clean_temp(char **temp, int index_n)
 	len = ft_strlen(*temp);
 	if (len == index_n)
 	{
-		free_function(temp);
+		free_temp(temp);
 		return ;
 	}
 	out = malloc((len - index_n + 1) * SIZE_OF_CHAR);
 	if (!out)
 	{
-		free_function(temp);
+		free_temp(temp);
 		return ;
 	}
 	i = 0;
 	while (index_n < len)
 		out[i++] = (*temp)[index_n++];
 	out[i] = '\0';
-	free_function(temp);
+	free_temp(temp);
 	*temp = out;
 }
 
@@ -61,10 +61,10 @@ static char	*next_line(char **temp, int index_n)
 	else
 		index_n++;
 	if (index_n == 0)
-		return (free_function(temp));
+		return (free_temp(temp));
 	out = malloc((index_n + 1) * SIZE_OF_CHAR);
 	if (!out)
-		return (free_function(temp));
+		return (free_temp(temp));
 	i = 0;
 	while (i < index_n)
 	{
@@ -85,7 +85,7 @@ char	*get_next_line(int fd)
 	char		*ptr;
 
 	r = BUFFER_SIZE;
-	index_n = ft_strchr(temp, '\n');
+	index_n = ft_index_n(temp, '\n');
 	while (r == BUFFER_SIZE && index_n == -1)
 	{
 		compute_buffer(&temp, fd, &r, buffer);
@@ -95,29 +95,10 @@ char	*get_next_line(int fd)
 			break ;
 		ptr = buffer;
 		if (!temp)
-			temp = ft_strdup(ptr);
+			temp = ft_tempdup(ptr);
 		else
-			temp = ft_strjoin(&temp, ptr);
-		index_n = ft_strchr(temp, '\n');
+			temp = ft_tempjoin(&temp, ptr);
+		index_n = ft_index_n(temp, '\n');
 	}
 	return (next_line(&temp, index_n));
-}
-
-#include <stdio.h>
-#include <fcntl.h>
-int	main()
-{
-	int fd = open("text.txt", O_RDONLY);
-	char *out = get_next_line(fd);
-	while (out)
-	{
-		printf("%s$", out);
-		if (out)
-			free(out);
-		out = get_next_line(fd);
-	}
-	// printf("%li\n", sizeof(char));
-	if (out)
-		free(out);
-	close(fd);
 }
