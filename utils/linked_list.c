@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linked_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bootjan <bootjan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 18:55:00 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/10/27 22:51:50 by bootjan          ###   ########.fr       */
+/*   Updated: 2023/10/30 12:44:07 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,25 +29,29 @@ size_t	stack_len(t_stack *stack)
 	return (len);
 }
 
-void	print_both(t_stack *stack_a, t_stack *stack_b)
+static void	print_stacks_helper(t_stack *stack_a, t_stack *stack_b)
 {
-	print_list(stack_a, 'a');
-	print_list(stack_b, 'b');
+	if (stack_a && stack_b)
+	{
+		print_stacks_helper(stack_a->next, stack_b->next);
+		ft_printf("%i  %i\n", stack_a->data, stack_b->data);
+	}
+	else if (stack_a)
+	{
+		print_stacks_helper(stack_a->next, NULL);
+		ft_printf("%i\n", stack_a->data);
+	}
+	else if (stack_b)
+	{
+		print_stacks_helper(NULL, stack_b->next);
+		ft_printf("   %i\n", stack_b->next);
+	}
 }
 
-void	print_list(t_stack *stack, char stack_name)
+void	print_stacks(t_stack *stack_a, t_stack *stack_b)
 {
-	t_stack	*current;
-
-	ft_printf("%c:\n", stack_name);
-	current = stack;
-	if (!current)
-		return ;
-	while (current)
-	{
-		ft_printf("%i\n", current->data);
-		current = current->next;
-	}
+	print_stacks_helper(stack_a, stack_b);
+	ft_printf("_  _\na  b\n\n");
 }
 
 void	free_list(t_stack **stack)

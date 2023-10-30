@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bootjan <bootjan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 18:34:47 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/10/27 23:36:11 by bootjan          ###   ########.fr       */
+/*   Updated: 2023/10/30 15:01:41 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	swap_operation(t_stack **stack)
+static void	swap_operation(t_stack **stack)
 {
 	t_stack	*first;
 	t_stack	*second;
@@ -46,7 +46,7 @@ void	ft_swap(t_stack **stack_a, t_stack **stack_b, int mode)
 	}
 }
 
-void	push_operation(t_stack **dst, t_stack **src)
+static void	push_operation(t_stack **dst, t_stack **src)
 {
 	t_stack	*next_src;
 	t_stack	*next_dst;
@@ -64,14 +64,25 @@ void	push_operation(t_stack **dst, t_stack **src)
 
 void	ft_push(t_stack **stack_a, t_stack **stack_b, int mode)
 {
+	int	set_null;
+
+	set_null = 0;
 	if (mode == 0 && *stack_b)
 	{
+		if (stack_len(*stack_b) == 1)
+			set_null = 1;
 		push_operation(stack_a, stack_b);
+		if (set_null)
+			*stack_b = NULL;
 		ft_printf("pa\n");
 	}
 	else if (mode == 1 && *stack_a)
 	{
+		if (stack_len(*stack_a) == 1)
+			set_null = 1;
 		push_operation(stack_b, stack_a);
+		if (set_null)
+			*stack_a = NULL;
 		ft_printf("pb\n");
 	}
 }

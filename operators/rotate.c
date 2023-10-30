@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bootjan <bootjan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 20:08:58 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/10/27 23:36:59 by bootjan          ###   ########.fr       */
+/*   Updated: 2023/10/30 15:01:27 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	rotate_operator(t_stack **stack)
+static void	rotate_operator(t_stack **stack)
 {
 	t_stack	*first;
 	t_stack	*current;
@@ -48,7 +48,7 @@ void	ft_rotate(t_stack **stack_a, t_stack **stack_b, int mode)
 	}
 }
 
-void	rev_rotate_operator(t_stack **stack)
+static void	rev_rotate_operator(t_stack **stack)
 {
 	t_stack	*current;
 	t_stack	*last;
