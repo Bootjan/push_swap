@@ -6,7 +6,7 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 18:13:40 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/10/30 13:31:18 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/01 14:21:27 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include "../libft/ft_printf.h"
-# include "../libft/get_next_line.h"
-# include "../libft/libft/libft.h"
+# include "ft_printf.h"
+# include "get_next_line.h"
+# include "libft.h"
 
 # define MAX_INT 2147483647
 # define MIN_INT 2147483648
@@ -37,5 +37,7 @@ void	ft_rotate(t_stack **stack_a, t_stack **stack_b, int mode);
 void	ft_rrotate(t_stack **stack_a, t_stack **stack_b, int mode);
 void	print_stacks(t_stack *stack_a, t_stack *stack_b);
 int		no_errors(const char *str);
+t_stack	*quicksort(t_stack *stack, int len);
+int		*compute_index_rank(t_stack *stack);
 
 #endif

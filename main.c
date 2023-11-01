@@ -6,7 +6,7 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 18:12:55 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/10/30 13:45:15 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/01 14:26:49 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ int	is_sorted(t_stack *stack)
 	
 	current = stack;
 	if (!current)
-		return (0);
+		return (1);
 	last = current->data;
 	current = current->next;
 	while (current)
 	{
 		if (last > current->data)
-			return (1);
+			return (0);
 		last = current->data;
 		current = current->next;
 	}
-	return (0);
+	return (1);
 }
 
 void	sort_stack(t_stack **stack_a, t_stack **stack_b)
@@ -42,6 +42,19 @@ void	sort_stack(t_stack **stack_a, t_stack **stack_b)
 			ft_rotate(stack_a, stack_b, 0);
 		return ;
 	}
+	// *stack_a = quicksort(*stack_a, stack_len(*stack_a));
+}
+
+void	print_arr(int *arr, int len)
+{
+	int	i;
+
+	i = 0;
+	while (i < len)
+	{
+		ft_printf("%i: %i\n", i, arr[i]);
+		i++;
+	}
 }
 
 int	main(int argc, char **argv)
@@ -49,27 +62,21 @@ int	main(int argc, char **argv)
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 	int		error_flag;
+	int		*rank_arr;
 
 	if (argc == 1)
-	{
-		ft_printf("Not enough arguments.\n");
-		return (0);
-	}
+		return (ft_printf("Not enough arguments.\n"), 1);
 	error_flag = 0;
 	stack_a = init_stack(argc, argv, &error_flag);
 	stack_b = NULL;
 	if (error_flag != 0)
-	{
-		ft_printf("Error\n");
-		return (0);
-	}
-	sort_stack(&stack_a, &stack_b);
+		return (ft_printf("Error\n"), 1);
 	print_stacks(stack_a, stack_b);
+	rank_arr = compute_index_rank(stack_a);
+	print_arr(rank_arr, stack_len(stack_a));
+
+	// sort_stack(&stack_a, &stack_b);
 	free_list(&stack_a);
-	// ft_push(&stack_a, &stack_b, 1);
-	// ft_rotate(&stack_a, NULL, 0);
-	// print_both(stack_a, stack_b);
-	// ft_push(&stack_a, &stack_b, 1);
-	// ft_rotate(&stack_a, &stack_b, 2);
-	// print_both(stack_a, stack_b);
+	free_list(&stack_b);
+	return (0);
 }

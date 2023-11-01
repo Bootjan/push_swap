@@ -6,7 +6,7 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 18:48:08 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/10/30 13:30:43 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/01 14:53:49 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,13 @@ t_stack	*init_stack(int amount, char **data, int *error_flag)
 	int		i;
 	t_stack	*stack;
 
-	i = amount;
+	i = 1;
 	stack = NULL;
-	while (i-- > 1 && *error_flag == 0)
+	while (i < amount && *error_flag == 0)
 	{
 		if (!no_errors(data[i]))
 			*error_flag = 1;
-		list_push_back(&stack, data[i], error_flag);
+		list_push_back(&stack, data[i++], error_flag);
 	}
 	if (*error_flag != 0)
 		free_list(&stack);
