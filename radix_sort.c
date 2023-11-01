@@ -6,53 +6,34 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 15:09:45 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/10/31 16:16:04 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/01 17:18:52 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/push_swap.h"
 
-int	compute_power_10(int num)
+int	get_max(int *arr, int len)
 {
-	int	out;
+	int	i;
+	int	max;
 
-	if (num == 0)
-		return (0);
-	out = 1;
-	while (num > 9)
-	{
-		out++;
-		num /= 10;
-	}
-	return (out);
-}
-int	compute_biggest_num(int *arr, size_t len)
-{
-	size_t	i;
-	int		biggest;
-
-	if (len == 0)
-		return (0);
-	biggest = arr[i];
+	if (!arr)
+		return (-1);
+	max = arr[0];
 	i = 1;
 	while (i < len)
 	{
-		if (arr[i] > biggest)
-			biggest = arr[i];
+		if (arr[i] > max)
+			max = arr[i];
 		i++;
 	}
-	return (biggest);
+	return (max);
 }
 
-int	*radix_sort(int *arr, size_t len)
+void	radix_sort(int *arr, t_stack **stack_a, int len)
 {
-	int	biggest_num;
-	int	i;
+	t_stack	*stack_b;
 
-	biggest_num = compute_biggest_num(arr, len);
-	i = 1;
-	while (i <= biggest_num)
-	{
-		
-	}
+	stack_b = NULL;
+	
 }
