@@ -6,7 +6,7 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 18:12:55 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/11/02 19:58:03 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/02 20:24:44 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ int	*solve_for_4(int *arr, t_stack **stack_a, t_stack **stack_b)
 	int	min;
 	int	max;
 	int	sort_index;
+	int	second_lowest;
 
 	sort_index = is_sorted_arr(arr, 4);
 	if (sort_index == 4)
@@ -98,12 +99,19 @@ int	*solve_for_4(int *arr, t_stack **stack_a, t_stack **stack_b)
 	{
 		ft_push(stack_a, stack_b, A);
 		solve_for_3(&(arr[1]), stack_a);
-		ft_push(stack_a, stack_b, B);
-		return (arr);
+		return (ft_push(stack_a, stack_b, B), arr);
 	}
-	
 	max = ft_get_max(arr, 4);
-	if ()
+	second_lowest = ft_get_2_min(arr, 4);
+	if (arr[0] == max && is_sorted_arr(&(arr[1]), 3) == 3)
+	{
+		ft_rotate(stack_a, stack_b, A);
+		return (ft_rotate_arr(arr, 4));
+	}
+	if (arr[0] == max && arr[3] == second_lowest)
+	{
+		
+	}
 }
 
 void	do_operations(int *rank_arr, int *arr_b, t_stack **stack_a, t_stack **stack_b)

@@ -6,7 +6,7 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 18:13:40 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/11/02 18:50:29 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/02 20:08:22 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ int		no_errors(const char *str);
 int		*radix_sort(int *arr, t_stack **stack_a, int len);
 int		*compute_index_rank(t_stack *stack, int len);
 void	print_arr(int *arr, int len);
+int		ft_get_2_min(int *arr, int len);
 
 #endif

@@ -4,7 +4,8 @@ MAIN = main.c
 
 SRCS = ${SRCS_OPERATORS}\
 ${SRCS_UTILS}\
-${MAIN}
+${MAIN}\
+helpers.c
 OBJS = ${SRCS:%.c=${OBJS_DIR}/%.o}
 
 NAME = push_swap
