@@ -6,7 +6,7 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 18:12:55 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/11/01 14:26:49 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/02 18:08:06 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,40 @@ int	is_sorted(t_stack *stack)
 	return (1);
 }
 
-void	sort_stack(t_stack **stack_a, t_stack **stack_b)
+void	do_operations(int *rank_arr, t_stack **stack_a, int len)
 {
-	if (is_sorted(*stack_a) || stack_len(*stack_a)	== 1)
+	t_stack	*stack_b;
+	int		*arr_b;
+
+	stack_b = NULL;
+	arr_b = ft_calloc(len, sizeof(int));
+	if (!arr_b)
 		return ;
-	if (stack_len(*stack_a) == 2)
+	while (!is_sorted(*stack_a) || stack_b)
+	{
+		if (top())
+	}
+}
+
+void	sort_stack(t_stack **stack_a)
+{
+	int	*rank_arr;
+	int	len;
+
+	len = stack_len(*stack_a);
+	if (is_sorted(*stack_a) || len	== 1)
+		return ;
+	if (len == 2)
 	{
 		if (!is_sorted(*stack_a))
-			ft_rotate(stack_a, stack_b, 0);
+			ft_rotate(stack_a, NULL, 0);
 		return ;
 	}
-	// *stack_a = quicksort(*stack_a, stack_len(*stack_a));
+	rank_arr = compute_index_rank(*stack_a, len);
+	if (!rank_arr)
+		return ;
+	do_operations(rank_arr, stack_a, len);
+	free(rank_arr);
 }
 
 void	print_arr(int *arr, int len)
@@ -60,7 +83,6 @@ void	print_arr(int *arr, int len)
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
-	t_stack	*stack_b;
 	int		error_flag;
 	int		*rank_arr;
 
@@ -68,15 +90,10 @@ int	main(int argc, char **argv)
 		return (ft_printf("Not enough arguments.\n"), 1);
 	error_flag = 0;
 	stack_a = init_stack(argc, argv, &error_flag);
-	stack_b = NULL;
 	if (error_flag != 0)
 		return (ft_printf("Error\n"), 1);
-	print_stacks(stack_a, stack_b);
-	rank_arr = compute_index_rank(stack_a);
-	print_arr(rank_arr, stack_len(stack_a));
-
-	// sort_stack(&stack_a, &stack_b);
+	print_stacks(stack_a, NULL);
+	sort_stack(&stack_a);
 	free_list(&stack_a);
-	free_list(&stack_b);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 14:01:11 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/11/01 15:15:27 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/02 17:33:04 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,15 +84,13 @@ int	find_next_smallest(t_stack *stack, int *last)
 	return (index);
 }
 
-int	*compute_index_rank(t_stack *stack)
+int	*compute_index_rank(t_stack *stack, int len)
 {
-	int	len;
 	int	*rank_arr;
 	int	index;
 	int	last;
 	int	i;
 
-	len = stack_len(stack);
 	rank_arr = ft_calloc(len, sizeof(int));
 	if (!rank_arr)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 11:48:15 by bootjan           #+#    #+#             */
-/*   Updated: 2023/10/10 15:21:21 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/02 17:54:43 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ void			*ft_memchr(const void *s, int c, size_t n);
 int				ft_atoi(const char *str);
 void			*ft_calloc(size_t nmemb, size_t size);
 int				ft_memcmp(const void *s1, const void *s2, size_t n);
+int				ft_abs(int x);
 
 #endif

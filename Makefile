@@ -4,8 +4,7 @@ MAIN = main.c
 
 SRCS = ${SRCS_OPERATORS}\
 ${SRCS_UTILS}\
-${MAIN}\
-quicksort.c
+${MAIN}
 OBJS = ${SRCS:%.c=${OBJS_DIR}/%.o}
 
 NAME = push_swap
