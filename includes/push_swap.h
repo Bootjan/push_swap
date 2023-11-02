@@ -6,7 +6,7 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 18:13:40 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/11/02 17:33:12 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/02 18:50:29 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 
 # define MAX_INT 2147483647
 # define MIN_INT 2147483648
+# define A 0
+# define B 1
+# define AB 2
 
 typedef struct s_stack
 {

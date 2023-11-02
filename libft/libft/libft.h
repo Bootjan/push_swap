@@ -6,7 +6,7 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 11:48:15 by bootjan           #+#    #+#             */
-/*   Updated: 2023/11/02 17:54:32 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/02 18:33:47 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,8 @@ int				ft_atoi(const char *str);
 void			*ft_calloc(size_t nmemb, size_t size);
 int				ft_memcmp(const void *s1, const void *s2, size_t n);
 int				ft_abs(int x);
+int				ft_get_max(int *arr, int len);
+int				ft_get_min(int *arr, int len);
+int				*ft_swap_list(int *arr, int x, int y);
 
 #endif
