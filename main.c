@@ -6,7 +6,7 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 18:12:55 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/11/02 19:02:39 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/02 19:58:03 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,20 +84,41 @@ int	*solve_for_3(int *arr, t_stack **stack)
 	return (ft_swap_list(arr, 0, 1));
 }
 
-// void	do_operations(int *rank_arr, t_stack **stack_a, int len)
-// {
-// 	t_stack	*stack_b;
-// 	int		*arr_b;
+int	*solve_for_4(int *arr, t_stack **stack_a, t_stack **stack_b)
+{
+	int	min;
+	int	max;
+	int	sort_index;
 
-// 	stack_b = NULL;
-// 	arr_b = ft_calloc(len, sizeof(int));
-// 	if (!arr_b)
-// 		return ;
-// 	while (is_sorted(*stack_a) != len || stack_b)
-// 	{
-// 		if (top())
-// 	}
-// }
+	sort_index = is_sorted_arr(arr, 4);
+	if (sort_index == 4)
+		return (arr);
+	min = ft_get_min(arr, 4);
+	if (min == arr[0])
+	{
+		ft_push(stack_a, stack_b, A);
+		solve_for_3(&(arr[1]), stack_a);
+		ft_push(stack_a, stack_b, B);
+		return (arr);
+	}
+	
+	max = ft_get_max(arr, 4);
+	if ()
+}
+
+void	do_operations(int *rank_arr, int *arr_b, t_stack **stack_a, t_stack **stack_b)
+{
+	int	len;
+
+	len = stack_len(*stack_a);
+	while (is_sorted(*stack_a) != len || *stack_b)
+	{
+		if (len == 3)
+			rank_arr = solve_for_3(rank_arr, stack_a);
+		if (len == 4)
+			rank_arr = solve_for_4(rank_arr, stack_a, stack_b);
+	}
+}
 
 void	sort_stack(t_stack **stack_a)
 {
@@ -152,6 +173,8 @@ int	main(int argc, char **argv)
 	print_stacks(stack_a, NULL);
 	sort_stack(&stack_a);
 	print_stacks(stack_a, NULL);
+	if (is_sorted(stack_a))
+		ft_printf("Sorted stack!\n");
 	free_list(&stack_a);
 	return (0);
 }
