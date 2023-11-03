@@ -6,7 +6,7 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 20:08:58 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/10/30 15:01:27 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/03 14:28:40 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	rev_rotate_operator(t_stack **stack)
 	current = *stack;
 	while (current->next)
 		current = current->next;
-	last = current->next;
+	last = current;
 	current->next = NULL;
 	last->next = *stack;
 	*stack = last;

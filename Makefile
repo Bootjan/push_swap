@@ -1,5 +1,5 @@
 SRCS_UTILS = init_stack.c linked_list.c error_checking.c index_rank_arr.c
-SRCS_OPERATORS = push_swap.c rotate.c
+SRCS_OPERATORS = push_swap.c rotate.c first_sort.c
 MAIN = main.c
 
 SRCS = ${SRCS_OPERATORS}\

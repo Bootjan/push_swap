@@ -6,7 +6,7 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 18:13:40 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/11/02 20:08:22 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/03 14:20:41 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@
 # define A 0
 # define B 1
 # define AB 2
+
+# define SWAP_A 0
+# define RROTATE 1
+# define ROTATE 2
+# define SORT_BOTTOM 3
+# define SORT_TOP 4
 
 typedef struct s_stack
 {
@@ -44,5 +50,6 @@ int		*radix_sort(int *arr, t_stack **stack_a, int len);
 int		*compute_index_rank(t_stack *stack, int len);
 void	print_arr(int *arr, int len);
 int		ft_get_2_min(int *arr, int len);
+void	sort_stack(int *arr, t_stack **stack_a, t_stack **stack_b);
 
 #endif
