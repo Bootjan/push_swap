@@ -1,15 +1,17 @@
 SRCS_UTILS = init_stack.c linked_list.c error_checking.c index_rank_arr.c
-SRCS_OPERATORS = push_swap.c rotate.c first_sort.c
+SRCS_OPERATORS = push_swap.c rotate.c
+SRCS_SORT = first_sort.c pull_from_bottom.c
 MAIN = main.c
 
 SRCS = ${SRCS_OPERATORS}\
 ${SRCS_UTILS}\
+${SRCS_SORT}\
 ${MAIN}\
 helpers.c
 OBJS = ${SRCS:%.c=${OBJS_DIR}/%.o}
 
 NAME = push_swap
-VPATH = ./utils ./operators
+VPATH = ./utils ./operators ./sort
 OBJS_DIR = ./objs
 
 CC = cc

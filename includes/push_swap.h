@@ -6,7 +6,7 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 18:13:40 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/11/03 14:20:41 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/06 14:49:15 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define B 1
 # define AB 2
 
+# define DO_NOTHING -1
 # define SWAP_A 0
 # define RROTATE 1
 # define ROTATE 2
@@ -51,5 +52,8 @@ int		*compute_index_rank(t_stack *stack, int len);
 void	print_arr(int *arr, int len);
 int		ft_get_2_min(int *arr, int len);
 void	sort_stack(int *arr, t_stack **stack_a, t_stack **stack_b);
+int		*pull_from_bottom(t_stack **stack_a, t_stack **stack_b, int num, int *arr);
+int		find_index(int *arr, int num, int len);
+int		is_sorted(t_stack *stack);
 
 #endif

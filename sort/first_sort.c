@@ -6,7 +6,7 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 13:56:14 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/11/03 16:11:44 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/06 14:47:08 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,17 @@ int	find_index(int *arr, int num, int len)
 	return (index);
 }
 
-int	half_index(int len, int num, int index)
+int	compute_action(int len, int num, int index)
 {
-	if (ft_abs(num - index) == 1 && index == 1)
+	if (index == num)
+		return (DO_NOTHING);
+	if (num == 0 && index == 1)
 		return (SWAP_A);
 	if (index == len - 1 && num == 0)
 		return (RROTATE);
 	if (index == 0 && num == len - 1)
 		return (ROTATE);
-	if (ft_abs(num - index) <= 2 && index > len >> 1)
+	if (index > len >> 1 && num <= len >> 1)
 		return (SORT_BOTTOM);
 	if (ft_abs(num - index) <= 2 && index <= len >> 1)
 		return (SORT_TOP);
@@ -59,7 +61,7 @@ int	*rrotate_list(int *arr, int len)
 	int	i;
 
 	i = len - 1;
-	while (i > 1)
+	while (i > 0)
 	{
 		arr = ft_swap_list(arr, i, i - 1);
 		i--;
@@ -82,7 +84,6 @@ void	sort_bottom(int *arr, t_stack **stack_a, t_stack **stack_b, int index)
 		ft_push(stack_a, stack_b, B);
 	}
 	ft_rrotate(stack_a, stack_b, A);
-	
 }
 
 void	sort_stack(int *arr, t_stack **stack_a, t_stack **stack_b)
@@ -90,36 +91,34 @@ void	sort_stack(int *arr, t_stack **stack_a, t_stack **stack_b)
 	int	len;
 	int	i;
 	int	index;
+	int	action;
 
 	len = stack_len(*stack_a);
 	i = 0;
-	while (i < len)
+	while (i < len && !is_sorted(*stack_a))
 	{
 		index = find_index(arr, i, len);
-		if (index == i)
-		{
-			i++;
-			continue ;
-		}
-		if (half_index(len, i, index) == SWAP_A)
+		action = compute_action(len, i, index);
+		if (action == SWAP_A)
 		{
 			ft_swap(stack_a, stack_b, A);
 			arr = ft_swap_list(arr, 0, 1);
 		}
-		if (half_index(len, i, index) == RROTATE)
+		if (action == RROTATE)
 		{
 			ft_rrotate(stack_a, stack_b, A);
 			arr = rrotate_list(arr, len);
 		}
-		if (half_index(len, i, index) == ROTATE)
+		if (action == ROTATE)
 		{
 			ft_rotate(stack_a, stack_b, A);
 			arr = rotate_list(arr, len);
 		}
-		if (half_index(len, i, index) == SORT_BOTTOM)
-			// sort
-		if (half_index(len, i, index) == SORT_TOP)
+		if (action == SORT_BOTTOM)
+			arr = pull_from_bottom(stack_a, stack_b, 1, arr);
+		// if (half_index(len, i, index) == SORT_TOP)
 			// sort
 		i++;
 	}
+	free(arr);
 }

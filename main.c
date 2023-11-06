@@ -6,7 +6,7 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 18:12:55 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/11/03 14:22:31 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/06 14:36:27 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ int	is_sorted(t_stack *stack)
 	while (current)
 	{
 		if (last > current->data)
-			return (index);
+			return (0);
 		last = current->data;
 		current = current->next;
 		index++;
 	}
-	return (index);
+	return (1);
 }
 
 int	is_sorted_arr(int *arr, int len)
@@ -50,111 +50,6 @@ int	is_sorted_arr(int *arr, int len)
 	}
 	return (i);
 }
-
-// int	*solve_for_3(int *arr, t_stack **stack)
-// {
-// 	int	max;
-// 	int	sort_index;
-// 	int	min;
-
-// 	max = ft_get_max(arr, 3);
-// 	if (arr[0] == max)
-// 	{
-// 		ft_rotate(stack, NULL, A);
-// 		arr = ft_swap_list(arr, 0, 1);
-// 		arr = ft_swap_list(arr, 1, 2);
-// 	}
-// 	sort_index = is_sorted_arr(arr, 3);
-// 	if (sort_index == 2)
-// 		return (arr);
-// 	min = ft_get_min(arr, 3);
-// 	if (arr[0] == min)
-// 	{
-// 		ft_swap(stack, NULL, A);
-// 		ft_rotate(stack, NULL, A);
-// 		return (ft_swap_list(arr, 1, 2));
-// 	}
-// 	if (arr[1] == max)
-// 	{
-// 		ft_rrotate(stack, NULL, A);
-// 		arr = ft_swap_list(arr, 1, 2);
-// 		return (ft_swap_list(arr, 1, 0));
-// 	}
-// 	ft_swap(stack, NULL, A);
-// 	return (ft_swap_list(arr, 0, 1));
-// }
-
-// int	*solve_for_4(int *arr, t_stack **stack_a, t_stack **stack_b)
-// {
-// 	int	min;
-// 	int	max;
-// 	int	sort_index;
-// 	int	second_lowest;
-
-// 	sort_index = is_sorted_arr(arr, 4);
-// 	if (sort_index == 4)
-// 		return (arr);
-// 	min = ft_get_min(arr, 4);
-// 	if (min == arr[0])
-// 	{
-// 		ft_push(stack_a, stack_b, A);
-// 		solve_for_3(&(arr[1]), stack_a);
-// 		return (ft_push(stack_a, stack_b, B), arr);
-// 	}
-// 	max = ft_get_max(arr, 4);
-// 	second_lowest = ft_get_2_min(arr, 4);
-// 	if (arr[0] == max && is_sorted_arr(&(arr[1]), 3) == 3)
-// 	{
-// 		ft_rotate(stack_a, stack_b, A);
-// 		return (ft_rotate_arr(arr, 4));
-// 	}
-// 	if (arr[0] == max && arr[3] == second_lowest)
-// 	{
-		
-// 	}
-// }
-
-// void	do_operations(int *rank_arr, int *arr_b, t_stack **stack_a, t_stack **stack_b)
-// {
-// 	int	len;
-
-// 	len = stack_len(*stack_a);
-// 	while (is_sorted(*stack_a) != len || *stack_b)
-// 	{
-// 		if (len == 3)
-// 			rank_arr = solve_for_3(rank_arr, stack_a);
-// 		if (len == 4)
-// 			rank_arr = solve_for_4(rank_arr, stack_a, stack_b);
-// 	}
-// }
-
-// void	sort_stack(t_stack **stack_a)
-// {
-// 	int	*rank_arr;
-// 	int	len;
-
-// 	len = stack_len(*stack_a);
-// 	if (is_sorted(*stack_a) || len	== 1)
-// 		return ;
-// 	if (len == 2)
-// 	{
-// 		if (!is_sorted(*stack_a))
-// 			ft_rotate(stack_a, NULL, 0);
-// 		return ;
-// 	}
-// 	rank_arr = compute_index_rank(*stack_a, len);
-// 	if (!rank_arr)
-// 		return ;
-// 	print_arr(rank_arr, stack_len(*stack_a));
-// 	// if (len == 3)
-// 	// {
-// 	// 	rank_arr = solve_for_3(rank_arr, stack_a);
-// 	// 	return (free(rank_arr));
-// 	// }
-// 	// else
-// 	// 	do_operations(rank_arr, stack_a, len);
-// 	free(rank_arr);
-// }
 
 void	print_arr(int *arr, int len)
 {

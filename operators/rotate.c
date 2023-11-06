@@ -6,7 +6,7 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 20:08:58 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/11/03 14:28:40 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/06 11:18:54 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,21 @@ void	ft_rotate(t_stack **stack_a, t_stack **stack_b, int mode)
 static void	rev_rotate_operator(t_stack **stack)
 {
 	t_stack	*current;
-	t_stack	*last;
+	t_stack	*previous;
 
 	if (!stack || stack_len(*stack) <= 1)
 		return ;
 	current = *stack;
+	previous = NULL;
 	while (current->next)
+	{
+		previous = current;
 		current = current->next;
-	last = current;
-	current->next = NULL;
-	last->next = *stack;
-	*stack = last;
+	}
+	current->next = *stack;
+	*stack = current;
+	if (previous)
+		previous->next = NULL;
 }
 
 void	ft_rrotate(t_stack **stack_a, t_stack **stack_b, int mode)
