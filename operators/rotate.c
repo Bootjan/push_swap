@@ -6,19 +6,19 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 20:08:58 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/11/06 11:18:54 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/09 19:08:27 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	rotate_operator(t_stack **stack)
+static int	rotate_operator(t_stack **stack)
 {
 	t_stack	*first;
 	t_stack	*current;
 
 	if (!stack || stack_len(*stack) <= 1)
-		return ;
+		return (0);
 	first = *stack;
 	*stack = first->next;
 	first->next = NULL;
@@ -26,35 +26,35 @@ static void	rotate_operator(t_stack **stack)
 	while (current->next)
 		current = current->next;
 	current->next = first;
+	return (1);
 }
 
 void	ft_rotate(t_stack **stack_a, t_stack **stack_b, int mode)
 {
 	if (mode == 0)
 	{
-		rotate_operator(stack_a);
-		ft_printf("ra\n");
+		if (rotate_operator(stack_a))
+			write(1, "ra\n", 3);
 	}
 	else if (mode == 1)
 	{
-		rotate_operator(stack_b);
-		ft_printf("rb\n");
+		if (rotate_operator(stack_b))
+			write(1, "rb\n", 3);
 	}
 	else if (mode == 2)
 	{
-		rotate_operator(stack_a);
-		rotate_operator(stack_b);
-		ft_printf("rr\n");
+		if (rotate_operator(stack_a) && rotate_operator(stack_b))
+			write(1, "rr\n", 3);
 	}
 }
 
-static void	rev_rotate_operator(t_stack **stack)
+static int	rev_rotate_operator(t_stack **stack)
 {
 	t_stack	*current;
 	t_stack	*previous;
 
 	if (!stack || stack_len(*stack) <= 1)
-		return ;
+		return (0);
 	current = *stack;
 	previous = NULL;
 	while (current->next)
@@ -66,24 +66,24 @@ static void	rev_rotate_operator(t_stack **stack)
 	*stack = current;
 	if (previous)
 		previous->next = NULL;
+	return (1);
 }
 
 void	ft_rrotate(t_stack **stack_a, t_stack **stack_b, int mode)
 {
 	if (mode == 0)
 	{
-		rev_rotate_operator(stack_a);
-		ft_printf("rra\n");
+		if (rev_rotate_operator(stack_a))
+			write(1, "rra\n", 4);
 	}
-	else if (mode == 1)
+	else if (mode)
 	{
-		rev_rotate_operator(stack_b);
-		ft_printf("rrb\n");
+		if (rev_rotate_operator(stack_b))
+			write(1, "rrb\n", 4);
 	}
 	else if (mode == 2)
 	{
-		rev_rotate_operator(stack_a);
-		rev_rotate_operator(stack_b);
-		ft_printf("rrr\n");
+		if (rev_rotate_operator(stack_b) && rev_rotate_operator(stack_a))
+			write(1, "rrr\n", 4);
 	}
 }

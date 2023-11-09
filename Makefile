@@ -1,6 +1,6 @@
-SRCS_UTILS = init_stack.c linked_list.c error_checking.c index_rank_arr.c
+SRCS_UTILS = init_stack.c linked_list.c error_checking.c
 SRCS_OPERATORS = push_swap.c rotate.c
-SRCS_SORT = first_sort.c pull_from_bottom.c
+SRCS_SORT = sort_for_three.c sort_for_four.c sort_for_five.c find_first_second.c
 MAIN = main.c
 
 SRCS = ${SRCS_OPERATORS}\

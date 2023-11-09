@@ -6,71 +6,54 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 11:25:12 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/11/06 11:26:11 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/09 18:50:03 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	*solve_for_3(int *arr, t_stack **stack)
+void	sort_for_3(t_stack **stack_a, int one, int two, int three)
 {
-	int	max;
-	int	sort_index;
-	int	min;
-
-	max = ft_get_max(arr, 3);
-	if (arr[0] == max)
+	if (one > two && two > three)
 	{
-		ft_rotate(stack, NULL, A);
-		arr = ft_swap_list(arr, 0, 1);
-		arr = ft_swap_list(arr, 1, 2);
+		ft_swap(stack_a, NULL, A);
+		ft_rrotate(stack_a, NULL, A);
 	}
-	sort_index = is_sorted_arr(arr, 3);
-	if (sort_index == 2)
-		return (arr);
-	min = ft_get_min(arr, 3);
-	if (arr[0] == min)
+	else if (one > three && three > one)
+		ft_rotate(stack_a, NULL, A);
+	else if (two > one && one > three)
+		ft_rrotate(stack_a, NULL, A);
+	else if (two > three && three > one)
 	{
-		ft_swap(stack, NULL, A);
-		ft_rotate(stack, NULL, A);
-		return (ft_swap_list(arr, 1, 2));
+		ft_rrotate(stack_a, NULL, A);
+		ft_swap(stack_a, NULL, A);
 	}
-	if (arr[1] == max)
-	{
-		ft_rrotate(stack, NULL, A);
-		arr = ft_swap_list(arr, 1, 2);
-		return (ft_swap_list(arr, 1, 0));
-	}
-	ft_swap(stack, NULL, A);
-	return (ft_swap_list(arr, 0, 1));
+	else if (three > one && one > two)
+		ft_swap(stack_a, NULL, A);
 }
 
-// int	*solve_for_4(int *arr, t_stack **stack_a, t_stack **stack_b)
-// {
-// 	int	min;
-// 	int	max;
-// 	int	sort_index;
-// 	int	second_lowest;
+void	get_1_2_3(t_stack *stack_a, int *one, int *two, int *three)
+{
+	*one = stack_a->data;
+	*two = stack_a->next->data;
+	*three = stack_a->next->next->data;
+}
 
-// 	sort_index = is_sorted_arr(arr, 4);
-// 	if (sort_index == 4)
-// 		return (arr);
-// 	min = ft_get_min(arr, 4);
-// 	if (min == arr[0])
-// 	{
-// 		ft_push(stack_a, stack_b, A);
-// 		solve_for_3(&(arr[1]), stack_a);
-// 		return (ft_push(stack_a, stack_b, B), arr);
-// 	}
-// 	max = ft_get_max(arr, 4);
-// 	second_lowest = ft_get_2_min(arr, 4);
-// 	if (arr[0] == max && is_sorted_arr(&(arr[1]), 3) == 3)
-// 	{
-// 		ft_rotate(stack_a, stack_b, A);
-// 		return (ft_rotate_arr(arr, 4));
-// 	}
-// 	if (arr[0] == max && arr[3] == second_lowest)
-// 	{
-		
-// 	}
-// }
+void	sort_for_3_4_5(t_stack **stack_a, t_stack **stack_b, int len)
+{
+	int	one;
+	int	two;
+	int	three;
+
+	if (is_sorted(*stack_a))
+		return ;
+	get_1_2_3(*stack_a, &one, &two, &three);
+	if (len == 3)
+		sort_for_3(stack_a, one, two, three);
+	else if (len == 4)
+		sort_for_4(stack_a, stack_b);
+	else if (len == 5)
+		sort_for_5(stack_a, stack_b);
+	else
+		push_next_element(stack_a, stack_b);
+}

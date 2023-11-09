@@ -6,7 +6,7 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 18:55:00 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/11/02 14:17:03 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/09 19:50:26 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	print_stacks_helper(t_stack *stack_a, t_stack *stack_b)
 	}
 	else if (stack_b)
 	{
-		ft_printf("   %i\n", stack_b->next);
+		ft_printf("   %i\n", stack_b->data);
 		print_stacks_helper(NULL, stack_b->next);
 	}
 }

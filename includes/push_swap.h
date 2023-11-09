@@ -6,7 +6,7 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 18:13:40 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/11/06 14:49:15 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/09 17:42:23 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,8 @@
 # define A 0
 # define B 1
 # define AB 2
-
-# define DO_NOTHING -1
-# define SWAP_A 0
-# define RROTATE 1
-# define ROTATE 2
-# define SORT_BOTTOM 3
-# define SORT_TOP 4
+# define TOP 0
+# define BOTTOM 1
 
 typedef struct s_stack
 {
@@ -48,12 +43,12 @@ void	ft_rrotate(t_stack **stack_a, t_stack **stack_b, int mode);
 void	print_stacks(t_stack *stack_a, t_stack *stack_b);
 int		no_errors(const char *str);
 int		*radix_sort(int *arr, t_stack **stack_a, int len);
-int		*compute_index_rank(t_stack *stack, int len);
-void	print_arr(int *arr, int len);
-int		ft_get_2_min(int *arr, int len);
-void	sort_stack(int *arr, t_stack **stack_a, t_stack **stack_b);
-int		*pull_from_bottom(t_stack **stack_a, t_stack **stack_b, int num, int *arr);
-int		find_index(int *arr, int num, int len);
 int		is_sorted(t_stack *stack);
+void	sort_for_3_4_5(t_stack **stack_a, t_stack **stack_b, int len);
+void	get_1_2_3(t_stack *stack_a, int *one, int *two, int *three);
+void	sort_for_4(t_stack **stack_a, t_stack **stack_b);
+void	sort_for_5(t_stack **stack_a, t_stack **stack_b);
+void	sort_for_3(t_stack **stack_a, int one, int two, int three);
+void	push_next_element(t_stack **stack_a, t_stack **stack_b);
 
 #endif
