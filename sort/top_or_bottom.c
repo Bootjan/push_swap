@@ -6,7 +6,7 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 12:04:28 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/11/10 12:07:50 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/10 16:13:23 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ static int	find_last(t_stack *stack_a, int max)
 
 static int	distance_to_border(int len, int index_first, int index_bottom)
 {
-
 	int	distance_bottom;
 
 	distance_bottom = len - index_bottom - 1;

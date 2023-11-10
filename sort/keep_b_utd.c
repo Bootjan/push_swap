@@ -6,86 +6,44 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 12:11:34 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/11/10 15:00:24 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/10 16:13:52 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	find_first_three(t_stack *stack, int *one, int *two, int *three)
+static void	insert_from_top(t_stack **stack_a, t_stack **stack_b, int new_index)
 {
-	*one = stack->data;
-	*two = stack->next->data;
-	*three = stack->next->next->data;
-}
+	int	i;
 
-static void	sort_b_for_3(t_stack **stack_a, t_stack **stack_b, int new_el)
-{
-	int	one;
-	int	two;
-
-	one = (*stack_b)->next->data;
-	two = (*stack_b)->next->next->data;
-	if (new_el < one && new_el > two)
-		ft_swap(stack_a, stack_b, B);
-	else if (new_el < one && new_el < two)
+	i = 0;
+	while (i++ < new_index)
 		ft_rotate(stack_a, stack_b, B);
+	ft_push(stack_a, stack_b, B);
 }
 
-static void	sort_b_for_4(t_stack **stack_a, t_stack **stack_b, int new_el)
+static void	insert_from_bottom(t_stack **stack_a, \
+t_stack **stack_b, int new_index)
 {
-	int	one;
-	int	two;
-	int	three;
+	int	i;
 
-	find_first_three(*stack_b, &one, &two, &three);
-	if (new_el < two && new_el > three)
+	i = 0;
+	while (i++ < new_index)
 		ft_rrotate(stack_a, stack_b, B);
 	ft_push(stack_a, stack_b, B);
-	if (new_el < three)
-		ft_rotate(stack_a, stack_b, B);
-	else if (new_el < two)
-	{
-		ft_rotate(stack_a, stack_b, B);
-		ft_rotate(stack_a, stack_b, B);
-	}
-	else if (new_el < one)
-		ft_swap(stack_a, stack_b, B);
-}
-
-static void	sort_b_for_5(t_stack **stack_a, t_stack **stack_b, int new_el)
-{
-	int	one;
-	int	two;
-	int	three;
-	int	four;
-
-	find_first_three(*stack_b, &one, &two, &three);
-	four = (*stack_b)->next->next->next->data;
-	if (new_el < two && new_el > three)
-		ft_rotate(stack_a, stack_b, B);
-	else if (new_el < three && new_el > four)
-		ft_rrotate(stack_a, stack_b, B);
-	ft_push(stack_a, stack_b, B);
-	if (new_el < four)
-		ft_rotate(stack_a, stack_b, B);
-	else if (new_el < three)
-	{
-		ft_rotate(stack_a, stack_b, B);
-		ft_rotate(stack_a, stack_b, B);
-	}
-	else if (new_el < two)
-	{
-		ft_swap(stack_a, stack_b, B);
-		ft_rrotate(stack_a, stack_b, B);
-	}
-	else if (new_el < one)
-		ft_swap(stack_a, stack_b, B);
 }
 
 static void	sort_b(t_stack **stack_a, t_stack **stack_b, int new_el)
 {
-	
+	int	new_index;
+	int	half_len;
+
+	new_index = find_new_index(*stack_b, new_el);
+	half_len = stack_len(*stack_b) >> 1;
+	if (new_index <= half_len)
+		insert_from_top(stack_a, stack_b, new_index);
+	else
+		insert_from_bottom(stack_a, stack_b, new_index);
 }
 
 void	keep_b_utd(t_stack **stack_a, t_stack **stack_b, int new_el)
@@ -104,6 +62,5 @@ void	keep_b_utd(t_stack **stack_a, t_stack **stack_b, int new_el)
 	else if (len == 4)
 		sort_b_for_5(stack_a, stack_b, new_el);
 	else if (len > 3)
-		ft_push(stack_a, stack_b, B);
-		// sort_b(stack_a, stack_b, new_el);
+		sort_b(stack_a, stack_b, new_el);
 }

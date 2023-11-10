@@ -6,7 +6,7 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 12:06:41 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/11/10 12:07:19 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/10 16:13:38 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ static int	find_smallest(int *arr, t_stack *stack, int len_arr)
 	}
 	while (current)
 	{
-		if (current->data < smallest && !ft_in_list(arr, len_arr, current->data))
+		if (current->data < smallest && \
+		!ft_in_list(arr, len_arr, current->data))
 			smallest = current->data;
 		current = current->next;
 	}

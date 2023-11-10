@@ -6,7 +6,7 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 18:12:55 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/11/10 13:17:40 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/10 16:14:22 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	is_sorted(t_stack *stack)
 	int		last;
 	t_stack	*current;
 	int		index;
-	
+
 	current = stack;
 	if (!current)
 		return (0);

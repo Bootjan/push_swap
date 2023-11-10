@@ -6,7 +6,7 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 11:25:12 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/11/09 18:50:03 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/10 16:30:24 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,8 @@ void	sort_for_3_4_5(t_stack **stack_a, t_stack **stack_b, int len)
 	else if (len == 5)
 		sort_for_5(stack_a, stack_b);
 	else
+	{
 		push_next_element(stack_a, stack_b);
+		push_to_a(stack_a, stack_b);
+	}
 }

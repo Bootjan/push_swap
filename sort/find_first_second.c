@@ -6,7 +6,7 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 14:52:19 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/11/10 13:17:32 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/10 16:41:50 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void	do_for_chunk(t_stack **stack_a, t_stack **stack_b, int len)
 			pull_from_top(stack_a, stack_b, distance);
 		else
 			pull_from_bottom(stack_a, stack_b, distance);
-		print_stacks(*stack_a, *stack_b);
 	}
 	free(arr);
 }
