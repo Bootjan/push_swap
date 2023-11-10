@@ -6,7 +6,7 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 18:12:55 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/11/09 19:45:42 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/10 13:17:40 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ int	main(int argc, char **argv)
 	print_stacks(stack_a, NULL);
 	stack_b = NULL;
 	sort_for_3_4_5(&stack_a, &stack_b, stack_len(stack_a));
-	print_stacks(stack_a, stack_b);
-	sort_for_3_4_5(&stack_b, &stack_a, stack_len(stack_b));
 	print_stacks(stack_a, stack_b);
 	if (is_sorted(stack_a))
 		ft_printf("Sorted stack!\n");
