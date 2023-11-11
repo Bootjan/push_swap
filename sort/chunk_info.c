@@ -6,7 +6,7 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 12:06:41 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/11/10 16:13:38 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/11 15:43:57 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	compute_curr_chunks_len(int len)
 {
 	int	div_20;
 
+	if (len > 200)
+		return (50);
 	if (len <= 20)
 		return (len);
 	div_20 = len / 20 + 1;

@@ -6,7 +6,7 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 18:13:40 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/11/10 16:29:41 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/11 15:55:06 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,6 @@ void	push_next_element(t_stack **stack_a, t_stack **stack_b);
 int		*compute_chunk_numbers(t_stack *stack, int len);
 int		pull_from_top_bottom(t_stack *stack_a, int max, int *distance);
 int		compute_curr_chunks_len(int len);
-void	keep_b_utd(t_stack **stack_a, t_stack **stack_b, int new_el);
-void	sort_b_for_3(t_stack **stack_a, t_stack **stack_b, int new_el);
-void	sort_b_for_4(t_stack **stack_a, t_stack **stack_b, int new_el);
-void	sort_b_for_5(t_stack **stack_a, t_stack **stack_b, int new_el);
 int		find_new_index(t_stack *stack_b, int new_el);
 void	push_to_a(t_stack **stack_a, t_stack **stack_b);
 

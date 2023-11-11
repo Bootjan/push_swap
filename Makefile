@@ -1,14 +1,13 @@
-SRCS_UTILS = init_stack.c linked_list.c error_checking.c
+SRCS_UTILS = init_stack.c stack_utils.c error_checking.c
 SRCS_OPERATORS = push_swap.c rotate.c
 SRCS_SORT = sort_for_three.c sort_for_four.c sort_for_five.c find_first_second.c \
-top_or_bottom.c chunk_info.c keep_b_utd.c sort_b_3_4_5.c find_index_b.c return_to_a.c
+top_or_bottom.c chunk_info.c find_index_b.c return_to_a.c
 MAIN = main.c
 
 SRCS = ${SRCS_OPERATORS}\
 ${SRCS_UTILS}\
 ${SRCS_SORT}\
-${MAIN}\
-helpers.c
+${MAIN}
 OBJS = ${SRCS:%.c=${OBJS_DIR}/%.o}
 
 NAME = push_swap
@@ -40,6 +39,7 @@ ${OBJS_DIR}/%.o: %.c
 
 clean:	
 	make -C ${MAKE_DIR} clean
+	${RM} ${OBJS_DIR}/*
 
 fclean: clean
 	${RM} ${NAME}

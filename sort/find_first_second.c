@@ -6,7 +6,7 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 14:52:19 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/11/10 16:41:50 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/11 16:01:00 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	pull_from_top(t_stack **stack_a, t_stack **stack_b, int index)
 	i = 0;
 	while (i++ < index)
 		ft_rotate(stack_a, stack_b, A);
-	keep_b_utd(stack_a, stack_b, (*stack_a)->data);
+	ft_push(stack_a, stack_b, B);
 }
 
 void	pull_from_bottom(t_stack **stack_a, t_stack **stack_b, int index)
@@ -41,7 +41,7 @@ void	pull_from_bottom(t_stack **stack_a, t_stack **stack_b, int index)
 	i = 0;
 	while (i++ <= index)
 		ft_rrotate(stack_a, stack_b, A);
-	keep_b_utd(stack_a, stack_b, (*stack_a)->data);
+	ft_push(stack_a, stack_b, B);
 }
 
 void	do_for_chunk(t_stack **stack_a, t_stack **stack_b, int len)

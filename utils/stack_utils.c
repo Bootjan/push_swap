@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   linked_list.c                                      :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 18:55:00 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/11/09 19:50:26 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/11 16:24:10 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,31 +29,6 @@ size_t	stack_len(t_stack *stack)
 	return (len);
 }
 
-static void	print_stacks_helper(t_stack *stack_a, t_stack *stack_b)
-{
-	if (stack_a && stack_b)
-	{
-		ft_printf("%i  %i\n", stack_a->data, stack_b->data);
-		print_stacks_helper(stack_a->next, stack_b->next);
-	}
-	else if (stack_a)
-	{
-		ft_printf("%i\n", stack_a->data);
-		print_stacks_helper(stack_a->next, NULL);
-	}
-	else if (stack_b)
-	{
-		ft_printf("   %i\n", stack_b->data);
-		print_stacks_helper(NULL, stack_b->next);
-	}
-}
-
-void	print_stacks(t_stack *stack_a, t_stack *stack_b)
-{
-	print_stacks_helper(stack_a, stack_b);
-	ft_printf("_  _\na  b\n\n");
-}
-
 void	free_list(t_stack **stack)
 {
 	t_stack	*current;
@@ -69,4 +44,20 @@ void	free_list(t_stack **stack)
 		current = next;
 	}
 	*stack = NULL;
+}
+
+int	is_sorted(t_stack *stack)
+{
+	t_stack	*current;
+
+	current = stack;
+	if (!current || !current->next)
+		return (1);
+	while (current->next)
+	{
+		if (current->data > current->next->data)
+			return (0);
+		current = current->next;
+	}
+	return (1);
 }

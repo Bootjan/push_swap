@@ -6,7 +6,7 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:03:11 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/10/30 13:26:56 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/11 16:05:59 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,26 +46,28 @@ static int	bigger_than_int(const char *str)
 	size_t	i;
 	size_t	num;
 	size_t	max_iter;
-	int		pos_neg;
+	int		sign;
 
 	i = 0;
-	pos_neg = 1;
+	sign = 1;
+	num = 0;
+	max_iter = 11;
 	while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
 		i++;
 	if (str[i] == '-')
 	{
 		i++;
-		pos_neg = -1;
+		sign = -1;
 	}
 	else if (str[i] == '+')
 		i++;
-	while (str[i] == '0')
+	while (str[i] && str[i + 1] && str[i] == '0')
 		i++;
-	num = 0;
-	max_iter = 11;
 	while (ft_isdigit(str[i]) && max_iter-- > 0)
 		num = num * 10 + str[i++] - '0';
-	return (return_result(num, pos_neg));
+	if (max_iter == 11)
+		return (1);
+	return (return_result(num, sign));
 }
 
 int	no_errors(const char *str)
