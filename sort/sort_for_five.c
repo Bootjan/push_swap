@@ -6,7 +6,7 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:23:35 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/11/09 13:37:49 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/13 16:25:21 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	insert_from_b(t_stack **stack_a, t_stack **stack_b, int index)
 {
 	if (index == 2)
-		ft_swap(stack_a, stack_b, A);
+		ft_rotate(stack_a, stack_b, A);
 	else if (index == 3)
 		ft_rrotate(stack_a, stack_b, A);
 	ft_push(stack_a, stack_b, A);

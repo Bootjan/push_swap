@@ -6,7 +6,7 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 18:34:47 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/11/09 19:24:43 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/13 16:06:45 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,24 @@ static void	swap_operation(t_stack **stack)
 
 void	ft_swap(t_stack **stack_a, t_stack **stack_b, int mode)
 {
+	int	len_a;
+	int	len_b;
+
+	if (stack_a)
+		len_a = stack_len(*stack_a);
+	if (stack_b)
+		len_b = stack_len(*stack_b);
 	if (mode == 0)
 	{
 		swap_operation(stack_a);
-		write(1, "sa\n", 3);
+		if (len_a > 1)
+			write(1, "sa\n", 3);
 	}
 	else if (mode == 1)
 	{
 		swap_operation(stack_b);
-		write(1, "sb\n", 3);
+		if (len_b > 1)
+			write(1, "sb\n", 3);
 	}
 	else if (mode == 2)
 	{

@@ -6,31 +6,11 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:03:11 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/11/11 16:05:59 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/16 12:19:42 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-static int	is_min_plus(char c)
-{
-	return (c == '-' || c == '+');
-}
-
-static int	all_digits(const char *str)
-{
-	size_t	i;
-
-	if (!str)
-		return (0);
-	i = 0;
-	while (str[i] && is_min_plus(str[i]))
-		i++;
-	while (str[i])
-		if (!ft_isdigit(str[i++]))
-			return (0);
-	return (1);
-}
 
 static int	return_result(size_t num, int pos_neg)
 {

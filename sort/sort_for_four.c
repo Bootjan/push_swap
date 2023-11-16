@@ -6,7 +6,7 @@
 /*   By: bschaafs <bschaafs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:22:40 by bschaafs          #+#    #+#             */
-/*   Updated: 2023/11/09 13:24:05 by bschaafs         ###   ########.fr       */
+/*   Updated: 2023/11/13 16:20:10 by bschaafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void	sort_for_4(t_stack **stack_a, t_stack **stack_b)
 	int	three;
 	int	index;
 
+	if (is_sorted(*stack_a))
+		return ;
 	ft_push(stack_a, stack_b, B);
 	get_1_2_3(*stack_a, &one, &two, &three);
 	sort_for_3(stack_a, one, two, three);
